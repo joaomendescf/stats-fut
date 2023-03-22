@@ -117,9 +117,11 @@ def filedownload(df):
 
 def filedownload_excel(df):
     excel = BytesIO()
-    writer = pd.ExcelWriter(excel, engine='xlsxwriter')
-    df.to_excel(writer, index=False, sheet_name='Sheet1')
-    writer.close()
+    book = openpyxl.Workbook()
+    sheet = book.active
+    for row in dataframe_to_rows(df, index=False, header=True):
+        sheet.append(row)
+    book.save(excel)
     excel.seek(0)
     b64 = base64.b64encode(excel.getvalue()).decode()
     href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="Base_de_Dados.xlsx">Download Excel File</a>'
