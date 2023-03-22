@@ -1,11 +1,10 @@
+from io import BytesIO
+from pyxlsb import open_workbook as open_xlsb
 import streamlit as st
 import pandas as pd
 from pandas import json_normalize
 import base64
-from io import BytesIO
 from datetime import datetime, timedelta, date
-import openpyxl
-from openpyxl.utils.dataframe import dataframe_to_rows
 
 
 
@@ -117,17 +116,21 @@ def filedownload(df):
     href = f'<a href="data:file/csv;base64,{b64}" download="Base_de_Dados.csv">Download CSV File</a>'
     return href
 
-def filedownload_excel(df):
-    excel = BytesIO()
-    book = openpyxl.Workbook()
-    sheet = book.active
-    for row in dataframe_to_rows(df, index=False, header=True):
-        sheet.append(row)
-    book.save(excel)
-    excel.seek(0)
-    b64 = base64.b64encode(excel.getvalue()).decode()
-    href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="Base_de_Dados.xlsx">Download Excel File</a>'
-    return href
+output = BytesIO()
+    writer = pd.ExcelWriter(output, engine='xlsxwriter')
+    df.to_excel(writer, index=False, sheet_name='Sheet1')
+    workbook = writer.book
+    worksheet = writer.sheets['Sheet1']
+    format1 = workbook.add_format({'num_format': '0.00'}) 
+    worksheet.set_column('A:A', None, format1)  
+    writer.save()
+    processed_data = output.getvalue()
+    return processed_data
+
+df_xlsx = to_excel(df)
+st.download_button(label='📥 Download XLSX',
+                                data=df_xlsx ,
+                                file_name= 'df_test.xlsx')
 
 st.markdown(filedownload(df), unsafe_allow_html=True)
 
