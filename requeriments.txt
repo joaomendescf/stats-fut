@@ -1,5 +1,5 @@
+from pyxlsb import open_workbook as open_xlsb
 streamlit
-openpyxl
 pandas
 numpy
 io
