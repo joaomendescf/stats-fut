@@ -116,7 +116,8 @@ def filedownload(df):
     href = f'<a href="data:file/csv;base64,{b64}" download="Base_de_Dados.csv">Download CSV File</a>'
     return href
 
-output = BytesIO()
+def to_excel(df):
+    output = BytesIO()
     writer = pd.ExcelWriter(output, engine='xlsxwriter')
     df.to_excel(writer, index=False, sheet_name='Sheet1')
     workbook = writer.book
