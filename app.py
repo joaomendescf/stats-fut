@@ -4,6 +4,7 @@ from pandas import json_normalize
 import base64
 from datetime import datetime, timedelta, date
 import io
+import openpyxl
 
 
 
@@ -116,19 +117,19 @@ def filedownload(df):
     return href
 
 
-buffer = io.BytesIO()
+def filedownload_excel(df):
+    excel = BytesIO()
+    book = openpyxl.Workbook()
+    sheet = book.active
+    for row in openpyxl.utils.dataframe.dataframe_to_rows(df, index=False, header=True):
+        sheet.append(row)
+    book.save(excel)
+    excel.seek(0)
+    b64 = base64.b64encode(excel.getvalue()).decode()
+    href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="Base_de_Dados.xlsx">Download Excel File</a>'
+    return href
 
-with pd.ExcelWriter(buffer, engine="xlsxwriter") as writer:
-    df.to_excel(writer, sheet_name="Sheet1", index=False)
-    writer.close()
 
-    st.download_button(
-        label="Download Excel worksheet without index",
-        data=buffer,
-        file_name="df1.xlsx",
-        mime="application/vnd.ms-excel",
-    )
-
-# st.markdown(filedownload_excel(df), unsafe_allow_html=True)
+st.markdown(filedownload_excel(df), unsafe_allow_html=True)
     
 st.markdown(filedownload(df), unsafe_allow_html=True)
