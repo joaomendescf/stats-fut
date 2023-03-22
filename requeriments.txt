@@ -1,4 +1,4 @@
-pyxlsb
+xlsxwriter
 streamlit
 pandas
 numpy
