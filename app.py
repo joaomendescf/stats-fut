@@ -110,42 +110,30 @@ else:
 st.dataframe(df)
 
 
-def filedownload(df):
-    csv = df.to_csv(index=False)
-    b64 = base64.b64encode(csv.encode()).decode()
-    href = f'<a href="data:file/csv;base64,{b64}" download="Base_de_Dados.csv">Download CSV File</a>'
-    return href
 
+def convert_df_xlsx(df):
+    # Credit Excel: https://discuss.streamlit.io/t/how-to-add-a-download-excel-csv-function-to-a-button/4474/5
+    towrite = BytesIO()
+    df.to_excel(towrite, encoding="utf-8", index=False, header=True)  # write to BytesIO buffer
+    towrite.seek(0)  # reset pointer
+    b64 = base64.b64encode(towrite.read()).decode()
+    href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="data_download.xlsx">Download Excel File</a>'
+    return st.markdown(href, unsafe_allow_html=True)
 
-# def filedownload_excel(df):
-#     excel = BytesIO()
-#     book = openpyxl.Workbook()
-#     sheet = book.active
-#     for row in openpyxl.utils.dataframe.dataframe_to_rows(df, index=False, header=True):
-#         sheet.append(row)
-#     book.save(excel)
-#     excel.seek(0)
-#     b64 = base64.b64encode(excel.getvalue()).decode()
-#     href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="Base_de_Dados.xlsx">Download Excel File</a>'
-#     return href
+def convert_df(df):
+    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+    return df.to_csv().encode('utf-8')
 
+ # -- DOWNLOAD SECTION
 
-# st.markdown(filedownload_excel(df), unsafe_allow_html=True)
-    
+st.subheader('Downloads:')
+# generate_excel_download_link(df_grouped)
+convert_df_xlsx(df)
 
-from openpyxl import Workbook
-from io import BytesIO
+st.download_button(
+    label="Download data as CSV",
+    data=convert_df(df),
+    file_name='base-de-dados.csv',
+    mime='text/csv',
+)
 
-workbook = Workbook()
-
-with NamedTemporaryFile() as tmp:
-     workbook.save(tmp.name)
-     data = BytesIO(tmp.read())
-
-st.download_button("Retrieve file",
-     data=data,
-     mime='xlsx',
-     file_name="name_of_file.xlsx")    
-    
-    
-st.markdown(filedownload(df), unsafe_allow_html=True)
