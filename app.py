@@ -129,7 +129,7 @@ def convert_df(df):
 # -- DOWNLOAD SECTION
 st.subheader('Downloads:')
 
-st.markdown(df, unsafe_allow_html=True)
+st.markdown(download_xlsx(df), unsafe_allow_html=True)
 
 st.download_button(
     label="Download data as CSV",
