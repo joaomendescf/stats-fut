@@ -2,5 +2,3 @@ streamlit
 openpyxl
 pandas
 numpy
-io
-base64
