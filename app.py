@@ -1,10 +1,9 @@
 import streamlit as st
-from io import BytesIO
 import pandas as pd
 from pandas import json_normalize
-#import xlsxwriter
 import base64
 from datetime import datetime, timedelta, date
+import io
 
 
 
@@ -117,21 +116,19 @@ def filedownload(df):
     return href
 
 
-output = BytesIO()
+buffer = io.BytesIO()
 
-# Write files to in-memory strings using BytesIO
-# See: https://xlsxwriter.readthedocs.io/workbook.html?highlight=BytesIO#constructor
-workbook = xlsxwriter.Workbook(output, {'in_memory': True})
-worksheet = workbook.add_worksheet()
+with pd.ExcelWriter(buffer, engine="xlsxwriter") as writer:
+    df.to_excel(writer, sheet_name="Sheet1", index=False)
+    writer.close()
 
-worksheet.write('A1', 'Hello')
-workbook.close()
+    st.download_button(
+        label="Download Excel worksheet without index",
+        data=buffer,
+        file_name="df1.xlsx",
+        mime="application/vnd.ms-excel",
+    )
 
-st.download_button(
-    label="Download Excel workbook",
-    data=output.getvalue(),
-    file_name="workbook.xlsx",
-    mime="application/vnd.ms-excel"
-)
+# st.markdown(filedownload_excel(df), unsafe_allow_html=True)
     
 st.markdown(filedownload(df), unsafe_allow_html=True)
