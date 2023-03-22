@@ -3,7 +3,7 @@ import pandas as pd
 from pandas import json_normalize
 import base64
 from datetime import datetime, timedelta, date
-import io
+from io import BytesIO
 # import openpyxl
 
 
