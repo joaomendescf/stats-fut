@@ -134,5 +134,3 @@ st.download_button(label='📥 Download XLSX',
                                 file_name= 'df_test.xlsx')
 
 st.markdown(filedownload(df), unsafe_allow_html=True)
-
-st.markdown(filedownload_excel(df), unsafe_allow_html=True)
