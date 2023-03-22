@@ -1,7 +1,6 @@
 streamlit
+xlsxwriter
 pandas
 numpy
-XlsxWriter
 io
 base64
-datetime
