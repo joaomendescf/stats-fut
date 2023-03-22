@@ -116,21 +116,20 @@ def filedownload(df):
     href = f'<a href="data:file/csv;base64,{b64}" download="Base_de_Dados.csv">Download CSV File</a>'
     return href
 
-def to_excel(df):
-    output = BytesIO()
-    writer = pd.ExcelWriter(output, engine='xlsxwriter')
-    df.to_excel(writer, index=False, sheet_name='Sheet1')
-    workbook = writer.book
-    worksheet = writer.sheets['Sheet1']
-    format1 = workbook.add_format({'num_format': '0.00'}) 
-    worksheet.set_column('A:A', None, format1)  
+
+buffer = io.BytesIO()
+with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+    # Write each dataframe to a different worksheet.
+    df.to_excel(writer, sheet_name='TIPS')
+    
+    # Close the Pandas Excel writer and output the Excel file to the buffer
     writer.save()
-    processed_data = output.getvalue()
-    return processed_data
 
-df_xlsx = to_excel(df)
-st.download_button(label='📥 Download XLSX',
-                                data=df_xlsx ,
-                                file_name= 'df_test.xlsx')
-
+    st.download_button(
+        label="Download XLSX",
+        data=buffer,
+        file_name="pandas_multiple.xlsx",
+        mime="application/vnd.ms-excel"
+    )
+    
 st.markdown(filedownload(df), unsafe_allow_html=True)
