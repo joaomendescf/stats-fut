@@ -116,8 +116,9 @@ def download_xlsx(df):
     downloaded_file = df.to_excel(towrite, encoding='utf-8', index=False, header=True)
     towrite.seek(0)  # reset pointer
     b64 = base64.b64encode(towrite.read()).decode()  # some strings
-    return href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="myfilename.xlsx">Download excel file</a>'
-
+    href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="myfilename.xlsx">Download excel file</a>'
+    
+    return href
 
 
 def convert_df(df):
