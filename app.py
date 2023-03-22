@@ -1,11 +1,9 @@
 import streamlit as st
 import pandas as pd
 from pandas import json_normalize
-import base64
+# import base64
 from datetime import datetime, timedelta, date
-from io import BytesIO
-import openpyxl
-from openpyxl.workbook import Workbook
+# from io import BytesIO
 
 
 
@@ -112,30 +110,27 @@ else:
 st.dataframe(df)
 
 
-def download_xlsx(df):
-    towrite = BytesIO()
-    downloaded_file = df.to_excel(towrite, encoding='utf-8', index=False, header=True)
-    towrite.seek(0)  # reset pointer
-    b64 = base64.b64encode(towrite.read()).decode()  # some strings
-    href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="myfilename.xlsx">Download excel file</a>'
-    
-    return href
-
+def convert_df(df):
+    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+    return df.to_excel('base-de-dados.xls',index=False).encode('utf-8')
 
 def convert_df(df):
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
     return df.to_csv().encode('utf-8')
 
+ # -- DOWNLOAD SECTION
 
-# -- DOWNLOAD SECTION
 st.subheader('Downloads:')
 
-st.markdown(download_xlsx(df), unsafe_allow_html=True)
-
+st.download_button(
+    label="Download data as XLS",
+    data=convert_df(df),
+    file_name='base-de-dados.xls',
+    mime='text/xls',
+)
 st.download_button(
     label="Download data as CSV",
     data=convert_df(df),
     file_name='base-de-dados.csv',
     mime='text/csv',
 )
-
