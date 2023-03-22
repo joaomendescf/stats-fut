@@ -4,7 +4,6 @@ from pandas import json_normalize
 import base64
 from datetime import datetime, timedelta, date
 from io import BytesIO
-import pickle 
 # import openpyxl
 
 
@@ -112,28 +111,24 @@ else:
 st.dataframe(df)
 
 
+def download_xlsx(df):
+    towrite = BytesIO()
+    downloaded_file = df.to_excel(towrite, encoding='utf-8', index=False, header=True)
+    towrite.seek(0)  # reset pointer
+    b64 = base64.b64encode(towrite.read()).decode()  # some strings
+    return href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="myfilename.xlsx">Download excel file</a>'
 
-def convert_df_xlsx(df, extension = 'xlsx'):
-    if extension == 'csv': # csv 
-        csv = df.to_csv(index=False)
-        b64 = base64.b64encode(csv.encode()).decode() 
-    else: # pickle
-        b = BytesIO()
-        pickle.dump(df, b)
-        b64 = base64.b64encode(b.getvalue()).decode()
-    
-    href = f'<a href="data:file/csv;base64,{b64}" download="new_file.{extension}">Download {extension}</a>'
-    st.write(href, unsafe_allow_html=True) 
 
 
 def convert_df(df):
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
     return df.to_csv().encode('utf-8')
 
- # -- DOWNLOAD SECTION
 
+# -- DOWNLOAD SECTION
 st.subheader('Downloads:')
-convert_df_xlsx(df)
+
+st.markdown(df, unsafe_allow_html=True)
 
 st.download_button(
     label="Download data as CSV",
