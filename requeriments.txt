@@ -1,5 +1,5 @@
 streamlit
-xlsxwriter
+openpyxl
 pandas
 numpy
 io
