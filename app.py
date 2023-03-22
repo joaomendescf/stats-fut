@@ -33,21 +33,22 @@ def load_data_flashScore(periodo, status):
     
     if status.upper() == 'PENDENTES':
         
-        df_filtrado = df[pd.to_datetime(df['Time_mod']).dt.time > pd.to_datetime(hora_agora).time()]
+#         df_filtrado = df[pd.to_datetime(df['Time_mod']).dt.time > pd.to_datetime(hora_agora).time()]
 
-        return df_filtrado
+#         return df_filtrado
+        return df
     
-    elif status.upper() == 'LIVE':
+#     elif status.upper() == 'LIVE':
     
-        filtro = (
-           pd.to_datetime(df['Time']).dt.time <= pd.to_datetime(hora_agora_ajuste).time()
-           ) & (
-           pd.to_datetime(df['Time_mod']).dt.time >= pd.to_datetime(hora_agora).time()
-           )
+#         filtro = (
+#            pd.to_datetime(df['Time']).dt.time <= pd.to_datetime(hora_agora_ajuste).time()
+#            ) & (
+#            pd.to_datetime(df['Time_mod']).dt.time >= pd.to_datetime(hora_agora).time()
+#            )
         
-        df_filtrado = df.loc[filtro]
+#         df_filtrado = df.loc[filtro]
 
-        return df_filtrado
+#         return df_filtrado
     
     else:
         return df
