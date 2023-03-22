@@ -1,5 +1,6 @@
-import io
 import streamlit as st
+import xlsxwriter
+from io import BytesIO
 import pandas as pd
 from pandas import json_normalize
 import base64
@@ -116,19 +117,21 @@ def filedownload(df):
     return href
 
 
-buffer = io.BytesIO()
-with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
-    # Write each dataframe to a different worksheet.
-    df.to_excel(writer, sheet_name='TIPS')
-    
-    # Close the Pandas Excel writer and output the Excel file to the buffer
-    writer.save()
+output = BytesIO()
 
-    st.download_button(
-        label="Download XLSX",
-        data=buffer,
-        file_name="pandas_multiple.xlsx",
-        mime="application/vnd.ms-excel"
-    )
+# Write files to in-memory strings using BytesIO
+# See: https://xlsxwriter.readthedocs.io/workbook.html?highlight=BytesIO#constructor
+workbook = xlsxwriter.Workbook(output, {'in_memory': True})
+worksheet = workbook.add_worksheet()
+
+worksheet.write('A1', 'Hello')
+workbook.close()
+
+st.download_button(
+    label="Download Excel workbook",
+    data=output.getvalue(),
+    file_name="workbook.xlsx",
+    mime="application/vnd.ms-excel"
+)
     
 st.markdown(filedownload(df), unsafe_allow_html=True)
