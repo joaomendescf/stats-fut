@@ -117,7 +117,7 @@ def convert_df_xlsx(df, extension = 'xlsx'):
         csv = df.to_csv(index=False)
         b64 = base64.b64encode(csv.encode()).decode() 
     else: # pickle
-        b = io.BytesIO()
+        b = BytesIO()
         pickle.dump(df, b)
         b64 = base64.b64encode(b.getvalue()).decode()
     
