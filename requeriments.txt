@@ -1,4 +1,4 @@
-from pyxlsb import open_workbook as open_xlsb
+pyxlsb
 streamlit
 pandas
 numpy
