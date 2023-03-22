@@ -4,7 +4,7 @@ from pandas import json_normalize
 import base64
 from datetime import datetime, timedelta, date
 import io
-import openpyxl
+# import openpyxl
 
 
 
@@ -117,19 +117,35 @@ def filedownload(df):
     return href
 
 
-def filedownload_excel(df):
-    excel = BytesIO()
-    book = openpyxl.Workbook()
-    sheet = book.active
-    for row in openpyxl.utils.dataframe.dataframe_to_rows(df, index=False, header=True):
-        sheet.append(row)
-    book.save(excel)
-    excel.seek(0)
-    b64 = base64.b64encode(excel.getvalue()).decode()
-    href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="Base_de_Dados.xlsx">Download Excel File</a>'
-    return href
+# def filedownload_excel(df):
+#     excel = BytesIO()
+#     book = openpyxl.Workbook()
+#     sheet = book.active
+#     for row in openpyxl.utils.dataframe.dataframe_to_rows(df, index=False, header=True):
+#         sheet.append(row)
+#     book.save(excel)
+#     excel.seek(0)
+#     b64 = base64.b64encode(excel.getvalue()).decode()
+#     href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="Base_de_Dados.xlsx">Download Excel File</a>'
+#     return href
 
 
-st.markdown(filedownload_excel(df), unsafe_allow_html=True)
+# st.markdown(filedownload_excel(df), unsafe_allow_html=True)
+    
+
+from openpyxl import Workbook
+from io import BytesIO
+
+workbook = Workbook()
+
+with NamedTemporaryFile() as tmp:
+     workbook.save(tmp.name)
+     data = BytesIO(tmp.read())
+
+st.download_button("Retrieve file",
+     data=data,
+     mime='xlsx',
+     file_name="name_of_file.xlsx")    
+    
     
 st.markdown(filedownload(df), unsafe_allow_html=True)
