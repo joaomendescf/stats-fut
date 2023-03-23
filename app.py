@@ -1,12 +1,10 @@
 import streamlit as st
 import pandas as pd
 from pandas import json_normalize
-# import base64
 from datetime import datetime, date
-# from io import BytesIO
 import json
 import pandas as pd
-import cfscrape
+# import cfscrape
 import io
 from github import Github
 
@@ -15,11 +13,14 @@ def upload_to_github(token, repo_name, file_path, commit_message):
     g = Github(token)
     repo = g.get_repo(repo_name)
 
+    #excluir arquivo existente no github
+    file = repo.get_contents('dados-stats.csv')
+    repo.delete_file(file.path, commit_message, file.sha)
+    
+    #upload de novo arquivo
     repo.create_file('dados-stats.csv', commit_message, file_path)
 
-def data(tipo):
-    # from datetime import datetime
-
+def data(tipo): 
     if tipo == 'dataframe':
         today = datetime.today().strftime('%d_%m_%H_%M')
     elif tipo == 'dia':
@@ -27,7 +28,6 @@ def data(tipo):
     return today
 
 def odd_frac_dec(odd_frac):
-
     ##odds decimais
     partes = odd_frac.split("/")
     numerador = int(partes[0])
@@ -39,7 +39,6 @@ def odd_dec_prob(odd_dec):
     return 1/odd_dec *100
 
 def jogos_do_dia(dia):
-
     url = f"https://api.sofascore.com/api/v1/sport/football/scheduled-events/{dia}"
 
     payload = ""
@@ -62,12 +61,12 @@ def jogos_do_dia(dia):
     }
     
     #evitar o erro 403
-    scraper = cfscrape.create_scraper()
+#     scraper = cfscrape.create_scraper()
+#     response = scraper.request("GET", url, data=payload, headers=headers)
 
-    # response = requests.request("GET", url, data=payload, headers=headers)
+    response = requests.request("GET", url, data=payload, headers=headers)
     
-    response = scraper.request("GET", url, data=payload, headers=headers)
-
+    
     json_data = json.loads(response.text)
 
     df = pd.json_normalize(json_data, record_path=['events'])
@@ -117,9 +116,11 @@ def odds_do_dia(dia):
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
     }
 
-    scraper = cfscrape.create_scraper()
+#     scraper = cfscrape.create_scraper()
 
-    response = scraper.request("GET", url, data=payload, headers=headers)
+#     response = scraper.request("GET", url, data=payload, headers=headers)
+
+    response = requests.request("GET", url, data=payload, headers=headers)
 
     json_data = json.loads(response.text)
 
@@ -164,6 +165,7 @@ def odds_do_dia(dia):
 
     return df_renomeado
     
+    
 def salvar_arquivo(df_jogos, df_odds, hoje):
 
     df = pd.merge(df_jogos, df_odds, left_on='Id_Evento', right_on='index')
@@ -184,6 +186,7 @@ def salvar_arquivo(df_jogos, df_odds, hoje):
 
     return csv_file
 
+
 def atualizar_bd():
 
     hoje = data('dataframe')
@@ -196,14 +199,12 @@ def atualizar_bd():
     # csv_file = f'stats-{dia}.xlsx'
     # csv_file = f'dados_stats_inicio.xlsx'
 
-    token = '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'
+    token = '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'
     repo_name = 'joaomendescf/stats-fut'
     commit_message = 'Adicionando arquivo stats'
     
     upload_to_github(token, repo_name, csv_file, commit_message)
-
-
-
+    # update_file_github(token, repo_name, csv_file, commit_message)
 
 
 
@@ -264,7 +265,8 @@ opcoes = ['Live','Pendentes','Data']
 opcao_selecionada = st.sidebar.radio('Status', opcoes)
 
 if st.sidebar.button("Atualizar Base de Dados"):
-    atualizar_bd()
+    if atualizar_bd():
+        st.sidebar.write('Base de Dados atualizada com sucesso!')
 
 if opcao_selecionada == 'Data':
   periodo = st.sidebar.date_input("Data de Análise", date.today())
