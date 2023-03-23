@@ -265,8 +265,8 @@ opcoes = ['Live','Pendentes','Data']
 opcao_selecionada = st.sidebar.radio('Status', opcoes)
 
 if st.sidebar.button("Atualizar Base de Dados"):
-    if atualizar_bd():
-        st.sidebar.write('Base de Dados atualizada com sucesso!')
+#     if atualizar_bd():
+    st.sidebar.write('Impossível atualizar no momento!')
 
 if opcao_selecionada == 'Data':
   periodo = st.sidebar.date_input("Data de Análise", date.today())
