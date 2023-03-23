@@ -1,0 +1,19 @@
+MH1 – Chances de gols
+Mh2 – Ofensividade
+MH3 – Dominância
+ExG – Expectativa de Gols
+
+APM1 – Ataques por minuto
+APM2 – Ataques por minuto, dos últimos 10 minutos
+
+MH1:Chance de gol e ele gera pontuação a partir dos dados de chute ao gol + posse de bola, + outros inputs. Valor ideal para uma única equipe a partir de 50, e a soma das duas equipes a partir de 60.
+
+MH2: Posicionamento ofensivo da equipe, quando uma equipe está rodeando a área adversária sem muitas interrupções (por exemplo: faltas e escanteios). Valor ideal para uma única equipe a partir de 10, e a soma das duas equipes a partir de 15.
+
+MH3: A soma da competição entre os índices. Qualquer valor de uma única equipe acima de 6 é um bom indicativo
+
+APM1: Indica a média de ataques perigosos por minutos. Ataques perigosos dividido por tempo do jogo.
+
+APM2: Mesma coisa do APM1 porém checando somente os últimos 10 minutos.
+
+ExG: Indica a expectativa de gol. Considera apenas os últimos 10 minutos da partida. Chute no Gol + Chute fora + Cantos, entre outros inputs (métricas). Pontuação máxima de 2. Pontuação entre 1.50 a 2 mostra um cenário de muita pressão de uma determinada equipe.

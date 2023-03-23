@@ -1,0 +1,479 @@
+
+##bot tips - pre-live
+- scraping no flashscore
+- adicionar planilha no github
+- codigo no streamlit
+
+
+
+##bot cantos telegram - live
+##bot back telegram - live
+##bot over telegram - live
+
+
+#SOFASCORE
+
+QTD EVENTOS NO DIA
+https://api.sofascore.com/api/v1/sport/-10800/event-count
+curl 'https://api.sofascore.com/api/v1/sport/-10800/event-count' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'cache-control: max-age=0' \
+  -H 'dnt: 1' \
+  -H 'if-none-match: W/"f18215b545"' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+
+
+
+JOGOS
+https://api.sofascore.com/api/v1/sport/football/scheduled-events/2023-03-22
+	curl 'https://api.sofascore.com/api/v1/sport/football/scheduled-events/2023-03-22' \
+	  -H 'authority: api.sofascore.com' \
+	  -H 'accept: */*' \
+	  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+	  -H 'cache-control: max-age=0' \
+	  -H 'dnt: 1' \
+	  -H 'if-none-match: W/"52d773b869"' \
+	  -H 'origin: https://www.sofascore.com' \
+	  -H 'referer: https://www.sofascore.com/' \
+	  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+	  -H 'sec-ch-ua-mobile: ?0' \
+	  -H 'sec-ch-ua-platform: "Windows"' \
+	  -H 'sec-fetch-dest: empty' \
+	  -H 'sec-fetch-mode: cors' \
+	  -H 'sec-fetch-site: same-site' \
+	  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+	  --compressed
+
+
+ODDS
+https://api.sofascore.com/api/v1/sport/football/odds/1/2023-03-22
+curl 'https://api.sofascore.com/api/v1/sport/football/odds/1/2023-03-22' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'cache-control: max-age=0' \
+  -H 'dnt: 1' \
+  -H 'if-none-match: W/"de620a01cd"' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+
+
+CASAS DE APOSTAS
+https://api.sofascore.com/api/v1/odds/providers/BR/web
+curl 'https://api.sofascore.com/api/v1/odds/providers/BR/web' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'cache-control: max-age=0' \
+  -H 'dnt: 1' \
+  -H 'if-none-match: W/"352fbbef97"' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+
+
+TORNEIOS
+https://api.sofascore.com/api/v1/config/unique-tournaments/BR
+curl 'https://api.sofascore.com/api/v1/config/unique-tournaments/BR' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'cache-control: max-age=0' \
+  -H 'dnt: 1' \
+  -H 'if-none-match: W/"6413251075"' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+
+
+JOGOS X TORNEIOS (POR CODIGOS)
+https://api.sofascore.com/api/v1/event/newly-added-events
+curl 'https://api.sofascore.com/api/v1/event/newly-added-events' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'cache-control: max-age=0' \
+  -H 'dnt: 1' \
+  -H 'if-none-match: W/"ad923b4b8f"' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+
+
+
+JOGOS LIVE
+https://api.sofascore.com/api/v1/sport/football/events/live
+curl 'https://api.sofascore.com/api/v1/sport/football/events/live' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'cache-control: max-age=0' \
+  -H 'dnt: 1' \
+  -H 'if-none-match: W/"4b46913706"' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+
+
+
+INCIDENTES DURANTE O JOGO
+https://api.sofascore.com/api/v1/event/11053038/incidents
+curl 'https://api.sofascore.com/api/v1/event/11053038/incidents' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'cache-control: max-age=0' \
+  -H 'dnt: 1' \
+  -H 'if-none-match: W/"e0c8f3f86a"' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+
+
+DISPUTA ENTRE TIMES H2H
+https://api.sofascore.com/api/v1/event/11053038/h2h
+curl 'https://api.sofascore.com/api/v1/event/11053038/h2h' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'cache-control: max-age=0' \
+  -H 'dnt: 1' \
+  -H 'if-none-match: W/"6ad1380b9b"' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+  
+  
+TECNICOS
+https://api.sofascore.com/api/v1/event/11053038/managers
+curl 'https://api.sofascore.com/api/v1/event/11053038/managers' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'cache-control: max-age=0' \
+  -H 'dnt: 1' \
+  -H 'if-none-match: W/"d41069ac28"' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+
+
+DADOS TIMES
+https://api.sofascore.com/api/v1/event/11053038/highlights
+curl 'https://api.sofascore.com/api/v1/event/11053038/highlights' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'cache-control: max-age=0' \
+  -H 'dnt: 1' \
+  -H 'if-none-match: W/"4f9694128c"' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+
+
+
+ESTATISTICAS JOGO
+https://api.sofascore.com/api/v1/event/11053038/statistics
+curl 'https://api.sofascore.com/api/v1/event/11053038/statistics' \
+  -X 'HEAD' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'dnt: 1' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+
+
+
+FORMACAO E JOGADORES
+https://api.sofascore.com/api/v1/event/11053038/lineups
+curl 'https://api.sofascore.com/api/v1/event/11053038/lineups' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'cache-control: max-age=0' \
+  -H 'dnt: 1' \
+  -H 'if-none-match: W/"265bf02ed8"' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+
+
+DADOS GERAIS SOBRE A PARTIDA
+https://api.sofascore.com/api/v1/event/11053038
+curl 'https://api.sofascore.com/api/v1/event/11053038' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'cache-control: max-age=0' \
+  -H 'dnt: 1' \
+  -H 'if-none-match: W/"b42422dee9"' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+
+
+ODDS
+https://api.sofascore.com/api/v1/event/11053038/odds/1/featured
+curl 'https://api.sofascore.com/api/v1/event/11053038/odds/1/featured' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'cache-control: max-age=0' \
+  -H 'dnt: 1' \
+  -H 'if-none-match: W/"6d11cc507c"' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+
+https://api.sofascore.com/api/v1/event/11053038/provider/1/winning-odds
+curl 'https://api.sofascore.com/api/v1/event/11053038/provider/1/winning-odds' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'cache-control: max-age=0' \
+  -H 'dnt: 1' \
+  -H 'if-none-match: W/"d5d7e83ed2"' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+
+https://api.sofascore.com/api/v1/event/11053038/odds/1/all
+curl 'https://api.sofascore.com/api/v1/event/11053038/odds/1/all' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'cache-control: max-age=0' \
+  -H 'dnt: 1' \
+  -H 'if-none-match: W/"b6c88ba751"' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+
+
+CANAL LIVE
+https://api.sofascore.com/api/v1/tv/channel/5236/event/11053038/votes
+curl 'https://api.sofascore.com/api/v1/tv/channel/1386/event/11053038/votes' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'cache-control: max-age=0' \
+  -H 'dnt: 1' \
+  -H 'if-none-match: W/"5c0fe66609"' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+
+
+GRAFICO DO JOGO
+https://api.sofascore.com/api/v1/event/11053038/graph
+curl 'https://api.sofascore.com/api/v1/event/11053038/graph' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'cache-control: max-age=0' \
+  -H 'dnt: 1' \
+  -H 'if-none-match: W/"fcfc981e98"' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+
+
+OUTRO JOGO
+https://api.sofascore.com/api/v1/event/popular-live-stream/football
+curl 'https://api.sofascore.com/api/v1/event/popular-live-stream/football' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'cache-control: max-age=0' \
+  -H 'dnt: 1' \
+  -H 'if-none-match: W/"4fbab594c2"' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+
+
+NOVOS EVENTOS ADICIONADOS
+https://api.sofascore.com/api/v1/event/newly-added-events
+curl 'https://api.sofascore.com/api/v1/event/newly-added-events' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'cache-control: max-age=0' \
+  -H 'dnt: 1' \
+  -H 'if-none-match: W/"ad923b4b8f"' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+  
+
+MELHORES JOGADORES DA PARTIDA
+https://api.sofascore.com/api/v1/event/11053038/best-players
+curl 'https://api.sofascore.com/api/v1/event/11053038/best-players' \
+  -H 'authority: api.sofascore.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: pt-BR,pt-PT;q=0.9,pt;q=0.8,en-US;q=0.7,en;q=0.6' \
+  -H 'cache-control: max-age=0' \
+  -H 'dnt: 1' \
+  -H 'if-none-match: W/"670ed67e8f"' \
+  -H 'origin: https://www.sofascore.com' \
+  -H 'referer: https://www.sofascore.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  --compressed
+
+
+FORMATO DA URL DO JOGO
+https://www.sofascore.com/chelsea-fc-women-olympique-lyonnais/VzkstKB
