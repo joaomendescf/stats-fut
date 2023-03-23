@@ -1,2 +1,12 @@
 streamlit
 pandas
+Github
+json
+cfscrape
+
+
+#from pandas import json_normalize
+# import base64
+#from datetime import datetime, date
+#import io
+
