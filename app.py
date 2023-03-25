@@ -239,11 +239,11 @@ def load_data_github(status):
 
     df['Horario_mod'] = pd.to_datetime(df['Horario'])
     df['Horario_mod'] = df['Horario_mod'] + pd.Timedelta(hours=2)
-    df['Horario_mod'] = df['Horario_mod'].dt.strftime('%H:%M')
+    df['Horario_mod'] = df['Horario_mod'].dt.strftime('%H:%M:%S')
 
 #     df['Data_Hora_mod'] = pd.to_datetime(df['Data_Hora'])
 #     df['Data_Hora_mod'] = df['Data_Hora_mod'] + pd.Timedelta(hours=2)
-#     df['Data_Hora_mod'] = df['Data_Hora_mod'].dt.strftime('%H:%M')
+#     df['Data_Hora_mod'] = df['Data_Hora_mod'].dt.strftime('%H:%M:%S')
     
     if status.upper() == 'PENDENTES':        
         df_filtrado = df[pd.to_datetime(df['Horario_mod']).dt.time > pd.to_datetime(hora_agora).time()]
@@ -254,7 +254,7 @@ def load_data_github(status):
            pd.to_datetime(df['Horario']).dt.time >= pd.to_datetime(hora_agora_ajuste).time()
            ) & (
            pd.to_datetime(df['Horario']).dt.time <= pd.to_datetime(hora_agora).time()
-           )     
+           )        
            
         df_filtrado = df.loc[filtro]
         return df_filtrado
