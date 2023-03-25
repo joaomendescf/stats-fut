@@ -237,19 +237,23 @@ def load_data_github(status):
     hora_agora = f'{ano}-{mes}-{dia} {hora}:{minuto}:{segundo}'
     hora_agora_ajuste = f'{ano}-{mes}-{dia} {hora - 2}:{minuto}:{segundo}'
 
-    df['Data_Hora_mod'] = pd.to_datetime(df['Data_Hora'])
-    df['Data_Hora_mod'] = df['Data_Hora_mod'] + pd.Timedelta(hours=2)
-    df['Data_Hora_mod'] = df['Data_Hora_mod'].dt.strftime('%H:%M')
+    df['Horario_mod'] = pd.to_datetime(df['Horario'])
+    df['Horario_mod'] = df['Horario_mod'] + pd.Timedelta(hours=2)
+    df['Horario_mod'] = df['Horario_mod'].dt.strftime('%H:%M')
+
+#     df['Data_Hora_mod'] = pd.to_datetime(df['Data_Hora'])
+#     df['Data_Hora_mod'] = df['Data_Hora_mod'] + pd.Timedelta(hours=2)
+#     df['Data_Hora_mod'] = df['Data_Hora_mod'].dt.strftime('%H:%M')
     
     if status.upper() == 'PENDENTES':        
-        df_filtrado = df[pd.to_datetime(df['Data_Hora_mod']).dt.time > pd.to_datetime(hora_agora).time()]
+        df_filtrado = df[pd.to_datetime(df['Horario_mod']).dt.time > pd.to_datetime(hora_agora).time()]
         return df_filtrado
     
     elif status.upper() == 'LIVE': 
         filtro = (
-           pd.to_datetime(df['Data_Hora']).dt.time >= pd.to_datetime(hora_agora_ajuste).time()
+           pd.to_datetime(df['Horario']).dt.time >= pd.to_datetime(hora_agora_ajuste).time()
            ) & (
-           pd.to_datetime(df['Data_Hora']).dt.time <= pd.to_datetime(hora_agora).time()
+           pd.to_datetime(df['Horario']).dt.time <= pd.to_datetime(hora_agora).time()
            )     
            
         df_filtrado = df.loc[filtro]
