@@ -237,15 +237,12 @@ def load_data_github(status):
     ajuste = 3 #fuso horário 3h
     hora_agora = f'{dia}/{mes}/{ano} {hora - ajuste}:{minuto}:{segundo}'
     hora_agora_inferior = f'{dia}/{mes}/{ano} {hora - 2 - ajuste}:{minuto}:{segundo}'
-#     hora_agora_superior = f'{dia}/{mes}/{ano} {hora + 2}:{minuto}:{segundo}'
-    
+  
     hora_agora = (pd.to_datetime(hora_agora)).strftime('%d/%m/%Y %H:%M:%S')
     hora_agora_inferior = (pd.to_datetime(hora_agora_inferior)).strftime('%d/%m/%Y %H:%M:%S')
-#     hora_agora_superior = (pd.to_datetime(hora_agora_superior)).strftime('%d/%m/%Y %H:%M:%S')
     
-    st.sidebar.write(hora_agora)
-    st.sidebar.write(hora_agora_inferior)
-#     st.sidebar.write(hora_agora)
+    st.sidebar.write('hora_agora)
+#     st.sidebar.write(hora_agora_inferior)
     
     df['Horario'] = pd.to_datetime(df['Horario'])
     df['Horario'] = df['Horario'].dt.strftime('%d/%m/%Y %H:%M:%S')
