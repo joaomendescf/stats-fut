@@ -224,7 +224,7 @@ def load_data_github(status):
 
     # df = pd.read_csv("https://github.com/futpythontrader/YouTube/blob/main/Jogos_do_Dia_FlashScore/"+str(periodo)+"_Jogos_do_Dia_FlashScore.csv?raw=true")
     # df = pd.read_csv("https://github.com/joaomendescf/stats-fut/blob/main/dados-stats.csv?raw=true")
-    df = pd.read_excel("https://github.com/joaomendescf/stats-fut/blob/main/lista_jogos_dia.xlsx?raw=true")
+    df = pd.read_csv("https://github.com/joaomendescf/stats-fut/blob/main/lista_jogos_dia.csv?raw=true")
 
     
     agora = datetime.today()
