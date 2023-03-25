@@ -234,9 +234,9 @@ def load_data_github(status):
     hora = agora.hour
     minuto = agora.minute
     segundo = agora.second
-    
-    hora_agora = f'{dia}/{mes}/{ano} {hora}:{minuto}:{segundo}'
-    hora_agora_inferior = f'{dia}/{mes}/{ano} {hora - 2}:{minuto}:{segundo}'
+    ajuste = 3 #fuso horário 3h
+    hora_agora = f'{dia}/{mes}/{ano} {hora - ajuste}:{minuto}:{segundo}'
+    hora_agora_inferior = f'{dia}/{mes}/{ano} {hora - 2 - ajuste}:{minuto}:{segundo}'
 #     hora_agora_superior = f'{dia}/{mes}/{ano} {hora + 2}:{minuto}:{segundo}'
     
     hora_agora = (pd.to_datetime(hora_agora)).strftime('%d/%m/%Y %H:%M:%S')
