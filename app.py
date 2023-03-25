@@ -234,31 +234,26 @@ def load_data_github(status):
     hora = agora.hour
     minuto = agora.minute
     segundo = agora.second
-    hora_agora = f'{ano}-{mes}-{dia} {hora}:{minuto}:{segundo}'
-    hora_agora_ajuste = f'{ano}-{mes}-{dia} {hora - 2}:{minuto}:{segundo}'
-
-    df['Horario_mod'] = pd.to_datetime(df['Horario'])
-    df['Horario_mod'] = df['Horario_mod'] + pd.Timedelta(hours=2)
-    df['Horario_mod'] = df['Horario_mod'].dt.strftime('%H:%M:%S')
-
-#     df['Data_Hora_mod'] = pd.to_datetime(df['Data_Hora'])
-#     df['Data_Hora_mod'] = df['Data_Hora_mod'] + pd.Timedelta(hours=2)
-#     df['Data_Hora_mod'] = df['Data_Hora_mod'].dt.strftime('%H:%M:%S')
     
+    hora_agora = f'{dia}/{mes}/{ano} {hora}:{minuto}:{segundo}'
+    hora_agora_inferior = f'{dia}/{mes}/{ano} {hora - 2}:{minuto}:{segundo}'
+    hora_agora_superior = f'{dia}/{mes}/{ano} {hora + 2}:{minuto}:{segundo}'
+    
+    hora_agora = (pd.to_datetime(hora_agora)).strftime('%d/%m/%Y %H:%M:%S')
+    hora_agora_inferior = (pd.to_datetime(hora_agora_inferior)).strftime('%d/%m/%Y %H:%M:%S')
+    hora_agora_superior = (pd.to_datetime(hora_agora_superior)).strftime('%d/%m/%Y %H:%M:%S')
+       
+    df['Horario'] = pd.to_datetime(df['Horario'])
+    df['Horario'] = df['Horario'].dt.strftime('%d/%m/%Y %H:%M:%S')
+   
     if status.upper() == 'PENDENTES':        
-        df_filtrado = df[pd.to_datetime(df['Horario_mod']).dt.time > pd.to_datetime(hora_agora).time()]
-        return df_filtrado
+        df = df[df['Horario'] >= hora_agora_inferior]
+        return df
     
     elif status.upper() == 'LIVE': 
-        filtro = (
-           pd.to_datetime(df['Horario']).dt.time >= pd.to_datetime(hora_agora_ajuste).time()
-           ) & (
-           pd.to_datetime(df['Horario']).dt.time <= pd.to_datetime(hora_agora).time()
-           )        
-           
-        df_filtrado = df.loc[filtro]
-        return df_filtrado
-    
+        df = df[(df['Horario'] >= hora_agora_inferior) & (df['Horario'] <= hora_agora)]
+        return df
+
     else:
         return df
 
